@@ -1,4 +1,4 @@
-# EXP 6 : SPEECH RECOGNITION USING SCILAB
+# EXP 6 : SIMULATION OF MULTIRATE DSP WITHOUT FUNCTION
 
 ## AIM: 
 
@@ -8,12 +8,48 @@ To perform and verify multirate DSP without function using SCILAB.
 PC installed with SCILAB. 
 
 ## PROGRAM : 
-
-//  SPEECH RECOGNITION USING SCILAB
+```
+clear; 
+clc; 
+close; 
+n = 0:%pi/50:2*%pi; 
+x = sin(%pi*n); //original signal 
+M=input('Enter the downsampling factor'); 
+L=input('Enter the upsampling factor'); 
+//Down Sampling 
+downsampling_x = x(1:M:length(x)); 
+disp(x,'Input signal x(n)='); 
+disp(downsampling_x,'Downsampled Signal'); 
+figure(1); 
+subplot(2,1,1) 
+plot2d3(1:length(x),x); 
+xtitle('original singal') 
+subplot(2,1,2) 
+plot2d3(1:length(downsampling_x),downsampling_x); 
+xtitle('Downsampled Signal by a factor of M'); 
+//Upsampling 
+upsampling_x=[]; 
+for i=1:length(x) 
+upsampling_x(1,L*i)=x(i); 
+end 
+disp(x,'Input signal x(n)='); 
+disp(upsampling_x,'Upsampled Signal');
+figure(2); 
+subplot(2,1,1); 
+plot2d3(x); 
+title('original signal'); 
+subplot(2,1,2); 
+plot2d3(upsampling_x); 
+title('Upsampled Signal by a factor of L');
+```
 
 ## OUTPUT: 
 
+<img width="338" height="72" alt="image" src="https://github.com/user-attachments/assets/3a8ea708-25c0-432e-906a-e1665f78c89f" />
+
+<img width="1920" height="872" alt="image" src="https://github.com/user-attachments/assets/13c5753d-16bb-4ac8-b613-c0926fec99b5" /> 
+<img width="1917" height="884" alt="image" src="https://github.com/user-attachments/assets/ab247bfe-8b82-4e75-ac8f-e6ca2969232b" />
+
 
 ## RESULT: 
-Thus the decimation process by a factor M and interpolation process by a factor L using 
-SCILAB was implemented. 
+Hence the multirate DSP without function is simulated using SCILAB
